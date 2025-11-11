@@ -1,4 +1,3 @@
-// src/pages/Dashboard.js
 import React, { useState } from "react";
 import { useAuth } from "../AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +18,6 @@ import {
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("overview");
 
   const handleLogout = async () => {
     await logout();
