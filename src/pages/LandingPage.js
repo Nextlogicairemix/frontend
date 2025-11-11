@@ -1,360 +1,361 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  Shield,
-  Eye,
-  CheckCircle,
-  Lock,
-  FileText,
-  BarChart3,
-  BookOpen,
-  AlertTriangle,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Shield, Eye, CheckCircle, Lock, BarChart3, AlertTriangle, Menu, X, ChevronDown, Users, Zap } from 'lucide-react';
 
 export default function LandingPage() {
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-900 text-white overflow-x-hidden">
-      
-      {/* Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
-        <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <img src="/assets/logo.png" alt="NextLogic AI Logo" className="h-12 w-12" />
-            <h1 className="text-2xl font-black">NextLogic AI</h1>
-          </div>
-          <div className="hidden md:flex gap-6 items-center">
-            <a href="#features" className="text-white/80 hover:text-white transition-all">Features</a>
-            <a href="#how-it-works" className="text-white/80 hover:text-white transition-all">How It Works</a>
-            <a href="#pricing" className="text-white/80 hover:text-white transition-all">Pricing</a>
-            <Link to="/login" className="text-white/80 hover:text-white transition-all">Login</Link>
-            <Link to="/signup" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-6 py-2 rounded-full font-bold transition-all shadow-lg">
-              Start Free Trial
-            </Link>
-          </div>
-        </nav>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full bg-white/10 backdrop-blur-md z-50 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex items-center gap-2">
+              <Shield className="w-8 h-8 text-white" />
+              <span className="text-white text-xl font-bold">NextLogic AI</span>
+            </div>
 
-      {/* Trust Bar */}
-      <div className="fixed top-16 left-0 right-0 z-40 bg-white/5 backdrop-blur-sm border-b border-white/10">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm text-white/80">
-            <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-green-400" />
-              <span>FERPA Compliant</span>
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              <a href="#features" className="text-white/80 hover:text-white transition">Features</a>
+              <a href="#how-it-works" className="text-white/80 hover:text-white transition">How It Works</a>
+              <a href="#pricing" className="text-white/80 hover:text-white transition">Pricing</a>
+              <Link 
+                to="/login" 
+                className="text-white/80 hover:text-white transition"
+              >
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                className="bg-white text-purple-900 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
+              >
+                Start Free Trial
+              </Link>
             </div>
-            <div className="flex items-center gap-2">
-              <Eye className="w-4 h-4 text-blue-400" />
-              <span>Full Teacher Oversight</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-purple-400" />
-              <span>500+ Schools Trust Us</span>
-            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-white"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden py-4 space-y-4">
+              <a href="#features" className="block text-white/80 hover:text-white transition">Features</a>
+              <a href="#how-it-works" className="block text-white/80 hover:text-white transition">How It Works</a>
+              <a href="#pricing" className="block text-white/80 hover:text-white transition">Pricing</a>
+              <Link to="/login" className="block text-white/80 hover:text-white transition">Login</Link>
+              <Link
+                to="/signup"
+                className="block bg-white text-purple-900 px-6 py-2 rounded-lg font-semibold text-center hover:bg-gray-100 transition"
+              >
+                Start Free Trial
+              </Link>
+            </div>
+          )}
         </div>
-      </div>
+      </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-32 px-4">
-        {/* Animated Background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Hero Content */}
-            <div className="text-center lg:text-left space-y-8">
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start text-sm">
-                <span className="bg-green-500/20 border border-green-400/30 px-4 py-2 rounded-full">
-                  ✓ FERPA Compliant
-                </span>
-                <span className="bg-blue-500/20 border border-blue-400/30 px-4 py-2 rounded-full">
-                  👥 500+ Schools
-                </span>
-                <span className="bg-purple-500/20 border border-purple-400/30 px-4 py-2 rounded-full">
-                  🔒 Bank-Level Security
-                </span>
-              </div>
-
-              <h1 className="text-5xl md:text-7xl font-black leading-tight">
-                Stop AI Cheating
-                <span className="block bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 bg-clip-text text-transparent">
-                  Without Stopping AI
-                </span>
-              </h1>
-
-              <p className="text-xl md:text-2xl text-white/90">
-                Monitor every student AI interaction. Get instant visual alerts. Control which AI features are available per assignment. Teach responsible AI skills while maintaining academic integrity.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button
-                  onClick={() => navigate('/signup')}
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all transform hover:scale-105"
-                >
-                  Start Free Trial - 3 Sessions
-                </button>
-                <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 px-8 py-4 rounded-xl font-bold text-lg transition-all">
-                  Watch Demo (2 min)
-                </button>
-              </div>
-
-              <div className="flex items-center gap-4 justify-center lg:justify-start pt-4">
-                <div className="flex -space-x-2">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 border-2 border-white"></div>
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 border-2 border-white"></div>
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-400 border-2 border-white"></div>
-                </div>
-                <div className="text-sm text-left">
-                  <div className="font-bold">Over 5,000 teachers</div>
-                  <div className="text-white/70">maintaining academic integrity</div>
-                </div>
-              </div>
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Trust Badges */}
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <Shield className="w-4 h-4 text-green-400" />
+              <span className="text-white/90 text-sm">FERPA Compliant</span>
             </div>
-
-            {/* Right: Mock Dashboard */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-2xl">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between bg-white/10 p-4 rounded-xl">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-green-400"></div>
-                      <div>
-                        <div className="font-bold">Sarah Johnson</div>
-                        <div className="text-sm text-white/60">Currently active</div>
-                      </div>
-                    </div>
-                    <div className="bg-green-500/20 border border-green-400 px-3 py-1 rounded-full text-green-300 text-sm font-bold">
-                      ✓ Normal
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between bg-yellow-500/10 border-2 border-yellow-400/50 p-4 rounded-xl animate-pulse">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-yellow-400"></div>
-                      <div>
-                        <div className="font-bold">Mike Chen</div>
-                        <div className="text-sm text-white/60">High AI usage detected</div>
-                      </div>
-                    </div>
-                    <div className="bg-yellow-500/30 border border-yellow-400 px-3 py-1 rounded-full text-yellow-300 text-sm font-bold">
-                      ⚠ Alert
-                    </div>
-                  </div>
-
-                  <div className="mt-6 bg-gradient-to-r from-red-500/20 to-orange-500/20 border-2 border-red-400/50 p-4 rounded-xl">
-                    <div className="flex items-center gap-2 mb-2">
-                      <AlertTriangle className="w-5 h-5 text-red-400" />
-                      <span className="font-bold text-red-300">Background Alert Active</span>
-                    </div>
-                    <p className="text-sm text-white/80">Student Mike Chen is using AI assistance above threshold. Review session immediately.</p>
-                  </div>
-                </div>
-              </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <Users className="w-4 h-4 text-blue-400" />
+              <span className="text-white/90 text-sm">500+ Schools</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <CheckCircle className="w-4 h-4 text-purple-400" />
+              <span className="text-white/90 text-sm">14-Day Free Trial</span>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Problem Section */}
-      <section className="py-20 px-4 bg-black/30">
-        <div className="container mx-auto">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-6">
-              The Problem Every Teacher Faces
-            </h2>
-            <p className="text-xl text-white/80">
-              Students need to learn AI skills for the future, but how do you prevent cheating while teaching responsible AI use?
+          {/* Hero Content */}
+          <div className="text-center mb-12">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              Stop AI Cheating<br />
+              <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                Without Stopping AI
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
+              Give teachers real-time control over student AI usage. Monitor every interaction,
+              prevent cheating, and teach responsible AI use.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/signup"
+                className="bg-white text-purple-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105"
+              >
+                Start Free Trial
+              </Link>
+              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition">
+                Watch Demo
+              </button>
+            </div>
+            <p className="text-white/60 mt-4">No credit card required • Setup in 5 minutes</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="bg-red-500/10 border border-red-400/30 p-8 rounded-2xl">
-              <div className="text-5xl mb-4">😰</div>
-              <h3 className="text-2xl font-bold mb-3">Can't Detect AI Use</h3>
-              <p className="text-white/70">Traditional detection tools are unreliable. Students know how to bypass them. You can't tell if work is authentic.</p>
-            </div>
-
-            <div className="bg-orange-500/10 border border-orange-400/30 p-8 rounded-2xl">
-              <div className="text-5xl mb-4">🚫</div>
-              <h3 className="text-2xl font-bold mb-3">Banning AI Isn't the Answer</h3>
-              <p className="text-white/70">Students will need AI skills for college and careers. You want to teach responsible use, not ban it entirely.</p>
-            </div>
-
-            <div className="bg-yellow-500/10 border border-yellow-400/30 p-8 rounded-2xl">
-              <div className="text-5xl mb-4">⏰</div>
-              <h3 className="text-2xl font-bold mb-3">Time-Consuming Oversight</h3>
-              <p className="text-white/70">Manually reviewing student work for AI use takes hours you don't have. You need automated monitoring.</p>
+          {/* Mock Dashboard Preview */}
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-4 shadow-2xl">
+              <div className="bg-gray-900 rounded-lg p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-white font-semibold">Live Student Activity</h3>
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    <span className="text-white/60 text-sm">3 students active</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="bg-yellow-500/20 border-l-4 border-yellow-500 p-3 rounded">
+                    <p className="text-white text-sm">⚠️ Sarah M. - Excessive AI usage detected</p>
+                  </div>
+                  <div className="bg-green-500/20 border-l-4 border-green-500 p-3 rounded">
+                    <p className="text-white text-sm">✓ John D. - Using AI for research (approved)</p>
+                  </div>
+                  <div className="bg-blue-500/20 border-l-4 border-blue-500 p-3 rounded">
+                    <p className="text-white text-sm">ℹ️ Emma R. - Asked for help with citations</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-6">
-              Complete Visibility & Control
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Everything You Need to Control AI Usage
             </h2>
-            <p className="text-xl text-white/80">
-              NextLogic AI gives you X-ray vision into student AI usage
+            <p className="text-xl text-white/70 max-w-2xl mx-auto">
+              Powerful tools that give you complete visibility and control
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {[
-              {
-                icon: <Eye className="w-8 h-8 text-green-300" />,
-                title: "Real-Time Monitoring",
-                desc: "See exactly when students are using AI, what prompts they're entering, and how much AI assistance they're receiving.",
-                color: "green"
-              },
-              {
-                icon: <AlertTriangle className="w-8 h-8 text-yellow-300" />,
-                title: "Visual Background Alerts",
-                desc: "Student screens change color when suspicious AI activity is detected. Spot issues instantly without constant monitoring.",
-                color: "yellow"
-              },
-              {
-                icon: <Lock className="w-8 h-8 text-purple-300" />,
-                title: "Control AI Features Per Assignment",
-                desc: "Enable or disable specific AI tools with one click. Allow grammar checks but block essay generation.",
-                color: "purple"
-              },
-              {
-                icon: <FileText className="w-8 h-8 text-blue-300" />,
-                title: "Complete Session Logs",
-                desc: "Every AI interaction is logged and timestamped. Review student work history anytime with full transparency.",
-                color: "blue"
-              },
-              {
-                icon: <BarChart3 className="w-8 h-8 text-pink-300" />,
-                title: "Usage Analytics",
-                desc: "Track AI usage patterns across students and assignments. Identify who needs help and who's over-relying on AI.",
-                color: "pink"
-              },
-              {
-                icon: <BookOpen className="w-8 h-8 text-indigo-300" />,
-                title: "Teach Responsible AI",
-                desc: "Built-in lessons and prompts teach students ethical AI use. Prepare them for college and careers with AI literacy.",
-                color: "indigo"
-              }
-            ].map((feature, i) => (
-              <div key={i} className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all">
-                <div className={`bg-${feature.color}-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
-                  {feature.icon}
-                </div>
-                <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-white/70">{feature.desc}</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <Eye className="w-12 h-12 text-purple-400 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Real-Time Monitoring</h3>
+              <p className="text-white/70">
+                See exactly when and how students use AI. Get instant alerts for suspicious activity.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <AlertTriangle className="w-12 h-12 text-yellow-400 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Visual Alerts</h3>
+              <p className="text-white/70">
+                Student screens turn red when AI cheating is detected. Instant visual deterrent.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <Lock className="w-12 h-12 text-green-400 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Granular Controls</h3>
+              <p className="text-white/70">
+                Choose which AI features students can access. Block, allow, or approve per assignment.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <BarChart3 className="w-12 h-12 text-blue-400 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Usage Analytics</h3>
+              <p className="text-white/70">
+                Track AI usage patterns. Identify which students need extra support or intervention.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <Shield className="w-12 h-12 text-pink-400 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">FERPA Compliant</h3>
+              <p className="text-white/70">
+                Built with student privacy in mind. SOC 2 certified and fully FERPA compliant.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <Zap className="w-12 h-12 text-orange-400 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Quick Setup</h3>
+              <p className="text-white/70">
+                Get started in 5 minutes. Simple browser extension. No complex IT setup required.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              How It Works
+            </h2>
+            <p className="text-xl text-white/70">
+              Three simple steps to start monitoring AI usage
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            <div className="flex items-start gap-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                1
               </div>
-            ))}
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Create Your Account</h3>
+                <p className="text-white/70 text-lg">
+                  Sign up in 30 seconds. Add your students or share a class code. No credit card needed for trial.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                2
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Students Install Extension</h3>
+                <p className="text-white/70 text-lg">
+                  Students install our lightweight browser extension. Takes 10 seconds. Works on Chrome, Edge, and Brave.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-6">
+              <div className="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                3
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Monitor & Control</h3>
+                <p className="text-white/70 text-lg">
+                  See all AI usage in your dashboard. Set permissions per assignment. Get alerts for suspicious activity.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-4 bg-black/30">
-        <div className="container mx-auto max-w-6xl">
+      <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-white/5">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Simple, Transparent Pricing
             </h2>
-            <p className="text-xl text-white/80">
-              Start free. Scale with your school. No hidden fees.
+            <p className="text-xl text-white/70">
+              Start free. Upgrade anytime. Cancel anytime.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Free Trial */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">Free Trial</h3>
-                <div className="text-5xl font-black mb-2">$0</div>
-                <p className="text-white/60">Try it risk-free</p>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Free Plan */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
+              <h3 className="text-2xl font-bold text-white mb-2">Free</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-white">$0</span>
+                <span className="text-white/60">/month</span>
               </div>
-              <ul className="space-y-3 mb-8 text-sm">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span>3 monitored sessions</span>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-2 text-white/80">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  Up to 30 students
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span>All core features</span>
+                <li className="flex items-center gap-2 text-white/80">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  Basic monitoring
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span>Up to 25 students</span>
+                <li className="flex items-center gap-2 text-white/80">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  Email support
                 </li>
               </ul>
-              <button
-                onClick={() => navigate('/signup')}
-                className="w-full bg-white/10 hover:bg-white/20 border border-white/30 py-3 rounded-xl font-bold transition-all"
+              <Link
+                to="/signup"
+                className="block w-full bg-white/20 text-white text-center py-3 rounded-lg font-semibold hover:bg-white/30 transition"
               >
-                Start Free Trial
-              </button>
+                Start Free
+              </Link>
             </div>
 
             {/* Teacher Plan */}
-            <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-sm border-2 border-purple-400 p-8 rounded-2xl relative">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-1 rounded-full text-sm font-bold">
-                Most Popular
+            <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl p-8 border-2 border-white transform scale-105">
+              <div className="bg-white text-purple-900 text-sm font-bold px-3 py-1 rounded-full inline-block mb-4">
+                MOST POPULAR
               </div>
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">Teacher Plan</h3>
-                <div className="text-5xl font-black mb-2">$19</div>
-                <p className="text-white/60">per month</p>
+              <h3 className="text-2xl font-bold text-white mb-2">Teacher</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-white">$19</span>
+                <span className="text-white/80">/month</span>
               </div>
-              <ul className="space-y-3 mb-8 text-sm">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span><strong>Unlimited</strong> sessions</span>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-2 text-white">
+                  <CheckCircle className="w-5 h-5" />
+                  Unlimited students
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span>Up to 150 students</span>
+                <li className="flex items-center gap-2 text-white">
+                  <CheckCircle className="w-5 h-5" />
+                  Real-time alerts
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span>Advanced analytics</span>
+                <li className="flex items-center gap-2 text-white">
+                  <CheckCircle className="w-5 h-5" />
+                  Full analytics
+                </li>
+                <li className="flex items-center gap-2 text-white">
+                  <CheckCircle className="w-5 h-5" />
+                  Priority support
                 </li>
               </ul>
-              <button
-                onClick={() => navigate('/signup')}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-3 rounded-xl font-bold transition-all"
+              <Link
+                to="/signup"
+                className="block w-full bg-white text-purple-900 text-center py-3 rounded-lg font-bold hover:bg-gray-100 transition"
               >
-                Get Started
-              </button>
+                Start Free Trial
+              </Link>
             </div>
 
             {/* School Plan */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">School Plan</h3>
-                <div className="text-5xl font-black mb-2">Custom</div>
-                <p className="text-white/60">Contact for pricing</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
+              <h3 className="text-2xl font-bold text-white mb-2">School</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-white">Custom</span>
               </div>
-              <ul className="space-y-3 mb-8 text-sm">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span><strong>Unlimited</strong> everything</span>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-2 text-white/80">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  Unlimited teachers
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span>Custom access codes</span>
+                <li className="flex items-center gap-2 text-white/80">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  Admin dashboard
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span>Dedicated support</span>
+                <li className="flex items-center gap-2 text-white/80">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  SSO integration
+                </li>
+                <li className="flex items-center gap-2 text-white/80">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  Dedicated support
                 </li>
               </ul>
-              <button className="w-full bg-white/10 hover:bg-white/20 border border-white/30 py-3 rounded-xl font-bold transition-all">
+              <button className="w-full border-2 border-white text-white py-3 rounded-lg font-semibold hover:bg-white/10 transition">
                 Contact Sales
               </button>
             </div>
@@ -362,28 +363,66 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-6xl font-black mb-6">
-            Ready to Regain Control?
+      {/* CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Take Control of AI in Your Classroom?
           </h2>
-          <p className="text-xl md:text-2xl text-white/90 mb-8">
-            Join 5,000+ teachers who stopped worrying about AI cheating
+          <p className="text-xl text-white/70 mb-8">
+            Join 500+ teachers who are teaching responsible AI use while preventing cheating.
           </p>
-          <button
-            onClick={() => navigate('/signup')}
-            className="bg-white text-purple-900 hover:bg-gray-100 px-10 py-5 rounded-xl font-bold text-xl shadow-2xl transition-all transform hover:scale-105"
+          <Link
+            to="/signup"
+            className="inline-block bg-white text-purple-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105"
           >
-            Start Free Trial - No Credit Card
-          </button>
+            Start Your Free Trial
+          </Link>
+          <p className="text-white/60 mt-4">14-day free trial • No credit card required</p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-black/50 border-t border-white/10">
-        <div className="container mx-auto text-center">
-          <p className="text-white/40">© 2025 NextLogic AI. All rights reserved.</p>
+      <footer className="border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <Shield className="w-6 h-6 text-white" />
+                <span className="text-white font-bold">NextLogic AI</span>
+              </div>
+              <p className="text-white/60 text-sm">
+                Empowering teachers to teach responsible AI use while preventing cheating.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Product</h4>
+              <ul className="space-y-2">
+                <li><a href="#features" className="text-white/60 hover:text-white transition">Features</a></li>
+                <li><a href="#pricing" className="text-white/60 hover:text-white transition">Pricing</a></li>
+                <li><a href="#" className="text-white/60 hover:text-white transition">Demo</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Company</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-white/60 hover:text-white transition">About</a></li>
+                <li><a href="#" className="text-white/60 hover:text-white transition">Blog</a></li>
+                <li><a href="#" className="text-white/60 hover:text-white transition">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Legal</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-white/60 hover:text-white transition">Privacy</a></li>
+                <li><a href="#" className="text-white/60 hover:text-white transition">Terms</a></li>
+                <li><a href="#" className="text-white/60 hover:text-white transition">Security</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-8 text-center text-white/60 text-sm">
+            © 2024 NextLogic AI. All rights reserved.
+          </div>
         </div>
       </footer>
     </div>
