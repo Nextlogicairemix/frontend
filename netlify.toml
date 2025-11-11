@@ -1,59 +1,11 @@
 [build]
-  publish = "."
-  command = "echo 'No build needed'"
+  command = "npm run build"
+  publish = "build"
 
-[build.processing]
-  skip_processing = false
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
 [build.environment]
-  SECRETS_SCAN_ENABLED = "false"
-
-[[redirects]]
-  from = "/check_session"
-  to = "https://back-thbr.onrender.com/check_session"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/login"
-  to = "https://back-thbr.onrender.com/login"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/register"
-  to = "https://back-thbr.onrender.com/register"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/logout"
-  to = "https://back-thbr.onrender.com/logout"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/remix"
-  to = "https://back-thbr.onrender.com/remix"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/update_subscription"
-  to = "https://back-thbr.onrender.com/update_subscription"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/contact"
-  to = "https://back-thbr.onrender.com/contact"
-  status = 200
-  force = true
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "https://nextlogicai.com"
-    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
-    Access-Control-Allow-Headers = "Content-Type"
-    Access-Control-Allow-Credentials = "true"
+  REACT_APP_API_URL = "https://nextlogic-backend.onrender.com"
