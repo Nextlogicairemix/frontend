@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Shield, Eye, CheckCircle, Lock, BarChart3, AlertTriangle, Menu, X, ChevronDown, Users, Zap } from 'lucide-react';
+import { Shield, Eye, CheckCircle, Lock, BarChart3, AlertTriangle, Menu, X, Users, Zap } from 'lucide-react';
 
 export default function LandingPage() {
-  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -400,23 +399,23 @@ export default function LandingPage() {
               <ul className="space-y-2">
                 <li><a href="#features" className="text-white/60 hover:text-white transition">Features</a></li>
                 <li><a href="#pricing" className="text-white/60 hover:text-white transition">Pricing</a></li>
-                <li><a href="#" className="text-white/60 hover:text-white transition">Demo</a></li>
+                <li><a href="/" className="text-white/60 hover:text-white transition">Demo</a></li>
               </ul>
             </div>
             <div>
               <h4 className="text-white font-semibold mb-4">Company</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-white/60 hover:text-white transition">About</a></li>
-                <li><a href="#" className="text-white/60 hover:text-white transition">Blog</a></li>
-                <li><a href="#" className="text-white/60 hover:text-white transition">Contact</a></li>
+                <li><a href="/" className="text-white/60 hover:text-white transition">About</a></li>
+                <li><a href="/" className="text-white/60 hover:text-white transition">Blog</a></li>
+                <li><a href="/" className="text-white/60 hover:text-white transition">Contact</a></li>
               </ul>
             </div>
             <div>
               <h4 className="text-white font-semibold mb-4">Legal</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-white/60 hover:text-white transition">Privacy</a></li>
-                <li><a href="#" className="text-white/60 hover:text-white transition">Terms</a></li>
-                <li><a href="#" className="text-white/60 hover:text-white transition">Security</a></li>
+                <li><a href="/" className="text-white/60 hover:text-white transition">Privacy</a></li>
+                <li><a href="/" className="text-white/60 hover:text-white transition">Terms</a></li>
+                <li><a href="/" className="text-white/60 hover:text-white transition">Security</a></li>
               </ul>
             </div>
           </div>
