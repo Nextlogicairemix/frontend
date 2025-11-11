@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Shield, Eye, CheckCircle, Lock, BarChart3, AlertTriangle, Menu, X, ChevronDown, Users, Zap } from 'lucide-react';
+
 export default function LandingPage() {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
