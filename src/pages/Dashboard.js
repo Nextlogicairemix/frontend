@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../AuthContext";
 import { useNavigate } from "react-router-dom";
+import AIRemixTool from "../components/AIRemixTool";
 import { 
   Shield, 
   Users, 
@@ -18,6 +19,7 @@ import {
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("overview");
 
   const handleLogout = async () => {
     await logout();
