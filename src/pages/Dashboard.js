@@ -19,7 +19,6 @@ import {
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("overview");
 
   const handleLogout = async () => {
     await logout();
