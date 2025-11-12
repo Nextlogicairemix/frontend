@@ -147,7 +147,13 @@ export default function Dashboard() {
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6">
+          {/* AI Remix Tool for Students */}
+          {!isTeacher && (
+            <AIRemixTool />
+          )}
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Column - Activity/Alerts */}
           <div className="lg:col-span-2 space-y-6">
             {isTeacher ? (
